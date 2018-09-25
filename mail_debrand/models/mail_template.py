@@ -24,7 +24,8 @@ class MailTemplate(models.Model):
         using_word = _('using')
         odoo_word = _('Odoo')
         return re.sub(
-            using_word + "(.*)[\r\n]*(.*)>" + odoo_word + r"</a>", "", body,
+            "(using|" + using_word + ")" + "(.*)[\r\n]*(.*)>" +
+            odoo_word + r"</a>", "", body,
         )
 
     @api.model
