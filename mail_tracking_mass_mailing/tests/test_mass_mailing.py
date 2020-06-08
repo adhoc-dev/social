@@ -21,7 +21,7 @@ class TestMassMailing(TransactionCase):
             'name': 'Test mail tracking',
         })
         self.list.name = '%s #%s' % (self.list.name, self.list.id)
-        self.contact_a = self.env['mail.mass_mailing.contact'].create({
+        self.contact_a = self.env['mailing.contact'].create({
             'list_ids': [(6, 0, self.list.ids)],
             'name': 'Test contact A',
             'email': 'contact_a@example.com',
@@ -30,7 +30,7 @@ class TestMassMailing(TransactionCase):
             'name': 'Test subject',
             'email_from': 'from@example.com',
             'mailing_model_id': self.env.ref(
-                'mass_mailing.model_mail_mass_mailing_contact'
+                'mass_mailing.model_mailing_contact'
             ).id,
             'mailing_domain': "[('list_ids', 'in', %d)]" % self.list.id,
             'contact_list_ids': [(6, False, [self.list.id])],

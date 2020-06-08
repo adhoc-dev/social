@@ -38,7 +38,7 @@ class MailTrackingEmail(models.Model):
         else:
             recipients = list(filter(None, self.mapped('recipient_address')))
         for recipient in recipients:
-            self.env['mail.mass_mailing.contact'].search([
+            self.env['mailing.contact'].search([
                 ('email', '=ilike', recipient)
             ]).email_bounced_set(self, reason, event=event)
 
