@@ -9,15 +9,15 @@ class MailTrackingEmail(models.Model):
     _inherit = "mail.tracking.email"
 
     mass_mailing_id = fields.Many2one(
-        string="Mass mailing", comodel_name='mail.mass_mailing', readonly=True)
+        string="Mass mailing", comodel_name='mailing.mailing', readonly=True)
     mail_stats_id = fields.Many2one(
-        string="Mail statistics", comodel_name='mail.mail.statistics',
+        string="Mail statistics", comodel_name='mailing.trace',
         readonly=True)
     mail_id_int = fields.Integer(string="Mail ID", readonly=True)
 
     @api.model
     def _statistics_link_prepare(self, tracking):
-        """Inherit this method to link other object to mail.mail.statistics"""
+        """Inherit this method to link other object to mailing.trace"""
         return {
             'mail_tracking_id': tracking.id,
         }

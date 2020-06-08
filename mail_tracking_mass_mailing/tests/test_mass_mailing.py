@@ -17,7 +17,7 @@ mock_send_email = ('odoo.addons.base.models.ir_mail_server.'
 class TestMassMailing(TransactionCase):
     def setUp(self, *args, **kwargs):
         super(TestMassMailing, self).setUp(*args, **kwargs)
-        self.list = self.env['mail.mass_mailing.list'].create({
+        self.list = self.env['mailing.list'].create({
             'name': 'Test mail tracking',
         })
         self.list.name = '%s #%s' % (self.list.name, self.list.id)
@@ -26,7 +26,7 @@ class TestMassMailing(TransactionCase):
             'name': 'Test contact A',
             'email': 'contact_a@example.com',
         })
-        self.mailing = self.env['mail.mass_mailing'].create({
+        self.mailing = self.env['mailing.mailing'].create({
             'name': 'Test subject',
             'email_from': 'from@example.com',
             'mailing_model_id': self.env.ref(

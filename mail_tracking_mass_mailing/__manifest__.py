@@ -22,7 +22,7 @@
     ],
     "data": [
         "views/mail_tracking_email_view.xml",
-        "views/mail_mail_statistics_view.xml",
+        "views/mail_trace_view.xml",
         "views/mail_mass_mailing_view.xml",
         "views/mailing_contact_view.xml",
     ],
