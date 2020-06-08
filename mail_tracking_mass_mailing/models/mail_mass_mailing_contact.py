@@ -13,7 +13,6 @@ class MailMassMailingContact(models.Model):
         string="Email score", readonly=True, store=False,
         compute='_compute_email_score')
 
-    @api.multi
     @api.depends('email')
     def _compute_email_score(self):
         for contact in self.filtered('email'):

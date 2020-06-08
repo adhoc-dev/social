@@ -31,7 +31,6 @@ class MailTrackingEmail(models.Model):
                 self._statistics_link_prepare(tracking))
         return tracking
 
-    @api.multi
     def _contacts_email_bounced_set(self, reason, event=None):
         recipients = []
         if event and event.recipient_address:
@@ -43,14 +42,12 @@ class MailTrackingEmail(models.Model):
                 ('email', '=ilike', recipient)
             ]).email_bounced_set(self, reason, event=event)
 
-    @api.multi
     def smtp_error(self, mail_server, smtp_server, exception):
         res = super(MailTrackingEmail, self).smtp_error(
             mail_server, smtp_server, exception)
         self._contacts_email_bounced_set('error')
         return res
 
-    @api.multi
     def event_create(self, event_type, metadata):
         res = super(MailTrackingEmail, self).event_create(event_type, metadata)
         if event_type in {'hard_bounce', 'spam', 'reject'}:
