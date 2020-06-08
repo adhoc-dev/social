@@ -42,7 +42,7 @@ class TestMassMailing(TransactionCase):
     def test_smtp_error(self):
         with mock.patch(mock_send_email) as mock_func:
             mock_func.side_effect = Warning('Mock test error')
-            self.mailing.send_mail()
+            self.mailing.action_send_mail()
             for stat in self.mailing.statistics_ids:
                 if stat.mail_mail_id:
                     stat.mail_mail_id.send()
@@ -57,7 +57,7 @@ class TestMassMailing(TransactionCase):
             self.assertTrue(self.contact_a.email_bounced)
 
     def test_tracking_email_link(self):
-        self.mailing.send_mail()
+        self.mailing.action_send_mail()
         for stat in self.mailing.statistics_ids:
             if stat.mail_mail_id:
                 stat.mail_mail_id.send()
@@ -80,7 +80,7 @@ class TestMassMailing(TransactionCase):
             self.assertTrue(stat.opened)
 
     def _tracking_email_bounce(self, event_type, state):
-        self.mailing.send_mail()
+        self.mailing.action_send_mail()
         for stat in self.mailing.statistics_ids:
             if stat.mail_mail_id:
                 stat.mail_mail_id.send()
