@@ -13,8 +13,8 @@ class MailMail(models.Model):
         res = super(MailMail, self)._tracking_email_prepare(partner, email)
         res['mail_id_int'] = self.id
         res['mass_mailing_id'] = self.mailing_id.id
-        res['mail_stats_id'] = self.statistics_ids[:1].id \
-            if self.statistics_ids else False
+        res['mail_stats_id'] = self.mailing_trace_ids[:1].id \
+            if self.mailing_trace_ids else False
         return res
 
     @api.model
