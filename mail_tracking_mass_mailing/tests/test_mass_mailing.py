@@ -27,7 +27,7 @@ class TestMassMailing(TransactionCase):
             'email': 'contact_a@example.com',
         })
         self.mailing = self.env['mailing.mailing'].create({
-            'name': 'Test subject',
+            'subject': 'Test subject',
             'email_from': 'from@example.com',
             'mailing_model_id': self.env.ref(
                 'mass_mailing.model_mailing_contact'
