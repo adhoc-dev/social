@@ -21,7 +21,7 @@
     <field name="model">mailing.contact</field>
     <field name="inherit_id" ref="mass_mailing.view_mail_mass_mailing_contact_search"/>
     <field name="arch" type="xml">
-        <filter name="not_blacklisted" position="after">
+        <filter name="filter_not_email_bl" position="after">
             <filter string="Email bounced" name="email_bounced"
                     domain="[('email_bounced', '=', True)]"/>
         </filter>
