@@ -217,7 +217,7 @@
         <field name="priority" eval="2" />
         <field name="mode">primary</field>
         <field name="arch" type="xml">
-            <xpath expr='//field[@name="res_model_id"]' position='before'>
+            <xpath expr='//field[@name="res_model"]' position='before'>
                 <field name="user_id" />
                 <field name="res_name" string="Origin" />
             </xpath>
@@ -255,9 +255,7 @@
     </record>
 
 
-<!--
-    ACTION
--->
+    <!--  ACTION -->
     <record model="ir.actions.act_window" id="open_boards_activities">
         <field name="name">Activities</field>
         <field name="res_model">mail.activity</field>
@@ -278,9 +276,7 @@
     </record>
 
 
-<!--
-Menus
--->
+    <!-- Menus -->
     <menuitem
         id="board_menu_activities"
         name="Activities"
